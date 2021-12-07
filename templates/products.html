@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,13 +14,13 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' %}">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
-    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
     <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/tooplate.css">
+    <link rel="stylesheet" href="{% static 'css/tooplate.css' %}">
 </head>
 
 <body id="reportsPage" class="bg02">
@@ -40,7 +41,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Dashboard
+                                    <a class="nav-link" href={% url 'web:index' %}>Dashboard
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
