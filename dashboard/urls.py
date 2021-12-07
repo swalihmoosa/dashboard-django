@@ -7,5 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("web.urls",namespace="web")),
     path('product/', include("product.urls",namespace="product")),
-    # path('/user', include("user.urls",namespace="user")),
+    path('user/', include("user.urls",namespace="user")),
 ]
