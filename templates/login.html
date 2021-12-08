@@ -26,7 +26,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <form action="{% url 'user:login' %}" method="post" class="tm-login-form">
+                            <form action="{% url 'user:user_login' %}" method="post" class="tm-login-form">
                                 {% csrf_token %}
                                 <div class="input-group">
                                     <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>
