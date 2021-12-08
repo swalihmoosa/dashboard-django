@@ -159,7 +159,9 @@
                             <tbody>
                                 {% for category in categories %}
                                 <tr>
-                                    <td>{{category.id}}. {{category.category_name}}</td>
+                                    <a href="{% url 'product:category' %}?category={{category.category_name}}">
+                                        <td>{{category.id}}. {{category.category_name}}</td>
+                                    </a>
                                     <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
                                 </tr>
                                 {% endfor %}
@@ -180,16 +182,17 @@
             </footer>
         </div>
     </div>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <script>
         $(function () {
             $('.tm-product-name').on('click', function () {
                 window.location.href = "edit-product.html";
             });
         })
+
+        
     </script>
 </body>
 
