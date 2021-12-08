@@ -1,5 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 
-def user(request):
+def login(request):
+    username = request.POST.get("username")
+    password = request.POST.get("password")
+
+
     return render(request, "login.html")
