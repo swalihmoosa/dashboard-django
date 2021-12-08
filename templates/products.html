@@ -151,7 +151,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xl-4 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     <div class="bg-white tm-block h-100">
                         <h2 class="tm-block-title d-inline-block">Product Categories</h2>
@@ -159,9 +158,11 @@
                             <tbody>
                                 {% for category in categories %}
                                 <tr>
-                                    <a href="{% url 'product:category' %}?category={{category.category_name}}">
-                                        <td>{{category.id}}. {{category.category_name}}</td>
-                                    </a>
+                                    <td>
+                                        <a href="{% url 'product:category' %}?category={{category.category_name}}" >
+                                            {{category.id}}. {{category.category_name}}
+                                        </a>
+                                    </td>
                                     <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
                                 </tr>
                                 {% endfor %}
