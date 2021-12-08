@@ -113,86 +113,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for product in products %}
                                     <tr>
                                         <th scope="row">
                                             <input type="checkbox" aria-label="Checkbox">
                                         </th>
-                                        <td class="tm-product-name">1. In malesuada placerat (hover)</td>
-                                        <td class="text-center">145</td>
-                                        <td class="text-center">255</td>
-                                        <td>2018-10-28</td>
+                                        <td class="tm-product-name">{{product.id}}. {{product.product_name}}</td>
+                                        <td class="text-center">{{product.units_sold}}</td>
+                                        <td class="text-center">{{product.in_stock}}</td>
+                                        <td>{{product.expire_date}}</td>
                                         <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">2. Aenean eget urna enim. Sed enim</td>
-                                        <td class="text-center">240</td>
-                                        <td class="text-center">260</td>
-                                        <td>2018-10-24</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">3. Vivamus convallis tincidunt nisi</td>
-                                        <td class="text-center">360</td>
-                                        <td class="text-center">440</td>
-                                        <td>2019-02-14</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">4. Donec semper massa eget</td>
-                                        <td class="text-center">445</td>
-                                        <td class="text-center">655</td>
-                                        <td>2019-03-22</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">5. Donec semper massa eget</td>
-                                        <td class="text-center">445</td>
-                                        <td class="text-center">655</td>
-                                        <td>2019-03-22</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">6. Donec semper massa eget</td>
-                                        <td class="text-center">445</td>
-                                        <td class="text-center">655</td>
-                                        <td>2019-03-22</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">7. Donec semper massa eget</td>
-                                        <td class="text-center">445</td>
-                                        <td class="text-center">655</td>
-                                        <td>2019-03-22</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name">8. Donec semper massa eget</td>
-                                        <td class="text-center">445</td>
-                                        <td class="text-center">655</td>
-                                        <td>2019-03-22</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -225,42 +157,12 @@
                         <h2 class="tm-block-title d-inline-block">Product Categories</h2>
                         <table class="table table-hover table-striped mt-3">
                             <tbody>
+                                {% for category in categories %}
                                 <tr>
-                                    <td>1. Cras efficitur lacus</td>
+                                    <td>{{category.id}}. {{category.category_name}}</td>
                                     <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
                                 </tr>
-                                <tr>
-                                    <td>2. Pellentesque molestie</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>3. Sed feugiat nulla</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>4. Vestibulum varius arcu</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>5. Aenean eget urna enim</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>6. Condimentum viverra</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>7. In malesuada</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>8. Placerat</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>9. Donec semper</td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
 
