@@ -86,6 +86,7 @@
                             <h2 class="tm-block-title d-inline-block">Add Product</h2>
                         </div>
                     </div>
+
                     <div class="row mt-4 tm-edit-product-row">
                         <div class="col-xl-7 col-lg-7 col-md-12">
                             <form action="{% url 'product:add_product_form' %}" method="post" class="tm-edit-product-form ajax">
@@ -140,6 +141,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -156,10 +158,8 @@
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'jquery-ui-datepicker/jquery-ui.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/sweetalert2.min.js' %}"></script>
-
     <script>
         $(function () {
             $('#expire_date').datepicker();

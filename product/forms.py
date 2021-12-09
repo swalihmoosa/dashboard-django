@@ -1,8 +1,9 @@
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
+from django.forms.widgets import Select, TextInput, Textarea
 
-from product.models import Category, Product
+from product.models import Category, ProductItem
 
 
 
@@ -10,23 +11,24 @@ class ProductForm(ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all())
 
     class Meta:
-        model = Product
+        model = ProductItem
         fields = "__all__"
         widgets = {
-            "product_name" : widgets.TextInput(attrs={
+            "product_name" : TextInput(attrs={
                 "class" : "form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
             }),
-            "product_description" : widgets.Textarea(attrs={
+            "product_description" : Textarea(attrs={
+                "class" : "form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7",
+                "rows" : 4
+            }),
+            "units_sold" : TextInput(attrs={
                 "class" : "form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
             }),
-            "units_sold" : widgets.TextInput(attrs={
-                "class" : "form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-            }),
-            "in_stock" : widgets.TextInput(attrs={
+            "in_stock" : TextInput(attrs={
                 "class" : "form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
             }),
-            "expire_date" : widgets.DateInput(attrs={
+            "expire_date" : TextInput(attrs={
                 "class" : "form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
             }),
-            "category" : widgets.Select()
+            "category" : Select()
         }

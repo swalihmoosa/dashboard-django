@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Product(models.Model):
+class ProductItem(models.Model):
     product_name = models.CharField(max_length=155)
     product_description = models.TextField(max_length=255)
     units_sold = models.CharField(max_length=155)

@@ -10,7 +10,11 @@ $(document).ready(function (){
         $.ajax({
             type : method,
             url : url,
+            dataType:"json",
             data : new FormData(this),
+            processData : false,
+            contentType : false,
+            cache : false,
 
             success:function(data){
                 var title = data["title"]
@@ -29,9 +33,6 @@ $(document).ready(function (){
             error: function(data){
                 console.log("An Error Ocuured");
             },
-            processData : false,
-            contentType : false,
-            cache : false,
         })
     })
 })

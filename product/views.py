@@ -2,13 +2,13 @@ import json
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 
-from product.models import Category, Product
+from product.models import Category, ProductItem
 from product.forms import ProductForm
 
 
-def product(request):
+def productitem(request):
     categories = Category.objects.all()
-    products = Product.objects.all()
+    products = ProductItem.objects.all()
 
     context = {
         "categories" : categories,
@@ -23,8 +23,8 @@ def category(request):
 
     if category_name:
         if Category.objects.filter(category_name=category_name).exists():
-            if Product.objects.filter(category__category_name=category_name).exists():
-                products = Product.objects.filter(category__category_name=category_name).values()
+            if ProductItem.objects.filter(category__category_name=category_name).exists():
+                products = ProductItem.objects.filter(category__category_name=category_name).values()
                 data = list(products)
 
                 response_data = {
@@ -64,7 +64,7 @@ def add_product_form(request):
     form = ProductForm(request.POST)
 
     if form.is_valid():
-        if not Product.objects.filter(product_name=request.POST.get('product_name').exists()):
+        if not ProductItem.objects.filter(product_name=request.POST.get('product_name').exists()):
             form.save()
 
             response_data = {
