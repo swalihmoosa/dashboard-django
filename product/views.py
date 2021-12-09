@@ -2,6 +2,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 
 from product.models import Category, Product
+from product.forms import ProductForm
 
 
 def product(request):
@@ -46,3 +47,13 @@ def category(request):
         }
 
     return JsonResponse({'response_data' : response_data})
+
+
+def add_new_product(request):
+    form = ProductForm()
+
+    context = {
+        "form" : form
+    }
+
+    return render(request, "add-product.html", context=context)

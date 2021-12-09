@@ -3,9 +3,10 @@ from django.db import models
 
 class Product(models.Model):
     product_name = models.CharField(max_length=155)
+    product_description = models.TextField(max_length=255)
     units_sold = models.CharField(max_length=155)
     in_stock = models.CharField(max_length=155)
-    expire_date = models.CharField(max_length=155)
+    expire_date = models.DateField()
     category = models.ForeignKey("product.Category",on_delete=models.CASCADE)
 
     def __str__(self):
