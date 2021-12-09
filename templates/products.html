@@ -193,7 +193,44 @@
             });
         })
 
-        
+        $('table tr td a').on('click', function(e){
+            e.preventDefault()
+            var  $this = $(this)
+            var url = $this.attr("href")
+
+            $.ajax({
+                type : "GET",
+                url : url,
+                data : $this,
+                success : function(data){
+                    var r_data = data.response_data.data
+                    html_data = ""
+                    console.log(r_data);
+                    r_data.forEach(product => {
+                        html_data += `
+                        <tr>
+                            <th scope="row">
+                                <input type="checkbox" aria-label="Checkbox">
+                            </th>
+                            <td class="tm-product-name">${product.id}. ${product.product_name}</td>
+                            <td class="text-center">${product.units_sold}</td>
+                            <td class="text-center">${product.in_stock}</td>
+                            <td>${product.expire_date}</td>
+                            <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                        </tr>
+                        `
+                    });
+                    $('.table-responsive table tbody').html(html_data)
+
+                },
+                failure : function(){
+                    alert("Got an Error")
+                },
+                processData:false,
+				contentType:false,
+				cache:false,
+            })
+        })
     </script>
 </body>
 
