@@ -88,7 +88,8 @@
                     </div>
                     <div class="row mt-4 tm-edit-product-row">
                         <div class="col-xl-7 col-lg-7 col-md-12">
-                            <form action="" class="tm-edit-product-form">
+                            <form action="{% url 'product:add_product_form' %}" method="post" class="tm-edit-product-form ajax">
+                                {% csrf_token %}
                                 <div class="input-group mb-3">
                                     <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
                                         Name
@@ -101,12 +102,7 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Category</label>
-                                    <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="category">
-                                        <option selected>Select one</option>
-                                        <option value="1">Cras efficitur lacus</option>
-                                        <option value="2">Pellentesque molestie</option>
-                                        <option value="3">Sed feugiat nulla</option>
-                                    </select>
+                                    {{form.category}}
                                 </div>
                                 <div class="input-group mb-3">
                                     <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Expire
@@ -157,9 +153,13 @@
         </footer>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'jquery-ui-datepicker/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.min.js' %}"></script>
+
     <script>
         $(function () {
             $('#expire_date').datepicker();

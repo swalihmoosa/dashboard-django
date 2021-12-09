@@ -1,11 +1,14 @@
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
-from django.forms.models import ModelChoiceField
-from product.models import Product
+
+from product.models import Category, Product
+
 
 
 class ProductForm(ModelForm):
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
+
     class Meta:
         model = Product
         fields = "__all__"
@@ -25,8 +28,5 @@ class ProductForm(ModelForm):
             "expire_date" : widgets.DateInput(attrs={
                 "class" : "form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
             }),
-            "category" : forms.ChoiceField()
+            "category" : widgets.Select()
         }
-
-        # profile = forms.ModelChoiceField(queryset=Profile.objects.all(),
-        #     widget=forms.HiddenInput())
