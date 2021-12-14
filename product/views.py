@@ -84,6 +84,7 @@ def add_product_form(request):
 
 def edit_product(request, pk):  
     product = ProductItem.objects.get(pk=pk)
+    print("##################################################################################",product)
     form = ProductForm(instance = product)
 
     context = {
