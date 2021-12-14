@@ -8,6 +8,7 @@ class ProductItem(models.Model):
     in_stock = models.CharField(max_length=155)
     expire_date = models.DateField()
     category = models.ForeignKey("product.Category",on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media/product', blank=True,null=True)
 
     def __str__(self):
         return self.product_name

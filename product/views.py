@@ -64,20 +64,14 @@ def add_product_form(request):
     form = ProductForm(request.POST)
 
     if form.is_valid():
-        if not ProductItem.objects.filter(product_name=request.POST.get('product_name').exists()):
-            form.save()
+        print("#############################################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        form.save()
 
-            response_data = {
-                "status" : "success",
-                "title" : "Successfully Added",
-                "message" : "You added a new product"
-            }
-        else:
-            response_data = {
-                "status" : "error",
-                "title" : "Already Added",
-                "message" : "You are already added this product"
-            }
+        response_data = {
+            "status" : "success",
+            "title" : "Successfully Added",
+            "message" : "You added a new product"
+        }
 
     else:
         response_data = {

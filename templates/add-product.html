@@ -118,11 +118,6 @@
                                     {{form.in_stock}}
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="sold" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Units Sold
-                                    </label>
-                                    {{form.units_sold}}
-                                </div>
-                                <div class="input-group mb-3">
                                     <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
                                         <button type="submit" class="btn btn-primary">Add
                                         </button>
@@ -136,8 +131,7 @@
                             </div>
                             <div class="custom-file mt-3 mb-3">
                                 <input id="fileInput" type="file" style="display:none;" />
-                                <input type="button" class="btn btn-primary d-block mx-auto" value="Upload ..." onclick="document.getElementById('fileInput').click();"
-                                />
+                                {{form.image}}
                             </div>
                         </div>
                     </div>
