@@ -84,7 +84,6 @@ def add_product_form(request):
 
 def edit_product(request, pk):  
     product = ProductItem.objects.get(pk=pk)
-    print("##################################################################################",product)
     form = ProductForm(instance = product)
 
     context = {
@@ -92,4 +91,15 @@ def edit_product(request, pk):
         "form" : form
     }
 
-    return render(request,'edit-product.html',context=context) 
+    return render(request,'edit-product.html',context=context)
+
+
+def update(request, pk):
+    product = ProductItem.objects.get(pk=pk)
+    form = ProductForm(request.POST, request.FILES, instance = product)  
+
+    if form.is_valid():  
+        form.save()  
+        return redirect("/product")  
+
+    return render(request, 'edit-product.html', {'product':product})  

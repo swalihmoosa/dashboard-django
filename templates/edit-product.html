@@ -87,7 +87,8 @@
                     </div>
                     <div class="row mt-4 tm-edit-product-row">
                         <div class="col-xl-7 col-lg-7 col-md-12">
-                            <form action="" class="tm-edit-product-form">
+                            <form action="{% url 'product:update' pk=product.pk %}" method="post" class="tm-edit-product-form">
+                                {% csrf_token %}
                                 <div class="input-group mb-3">
                                     <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
                                         Name
@@ -112,7 +113,7 @@
                                     <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Units In
                                         Stock
                                     </label>
-                                    {{form.expire_date}}
+                                    {{form.in_stock}}
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
