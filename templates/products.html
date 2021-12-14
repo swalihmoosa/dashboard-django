@@ -171,7 +171,11 @@
                                             {{category.id}}. {{category.category_name}}
                                         </a>
                                     </td>
-                                    <td class="tm-trash-icon-cell"><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                    <td class="tm-trash-icon-cell">
+                                        <a href="{% url 'product:delete_category' pk=category.pk %}">
+                                            <i class="fas fa-trash-alt tm-trash-icon"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

@@ -111,3 +111,10 @@ def delete_product(request, pk):
 
     return redirect("/product")
 
+
+def delete_category(request, pk):
+    category = Category.objects.filter(pk=pk)
+    category.delete()
+
+    return redirect("/product")
+
