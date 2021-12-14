@@ -118,7 +118,11 @@
                                         <th scope="row">
                                             <input type="checkbox" aria-label="Checkbox">
                                         </th>
-                                        <td class="tm-product-name">{{product.id}}. {{product.product_name}}</td>
+                                        <td class="tm-product-name">
+                                            <a href="{% url 'product:edit_product' pk=product.pk %}">
+                                                {{product.product_name}}
+                                            </a>
+                                        </td>
                                         <td class="text-center">{{product.units_sold}}</td>
                                         <td class="text-center">{{product.in_stock}}</td>
                                         <td>{{product.expire_date}}</td>
@@ -159,7 +163,7 @@
                                 {% for category in categories %}
                                 <tr>
                                     <td>
-                                        <a href="{% url 'product:category' %}?category={{category.category_name}}" >
+                                        <a href="{% url 'product:category' %}?category={{category.category_name}}" class="category">
                                             {{category.id}}. {{category.category_name}}
                                         </a>
                                     </td>
@@ -187,13 +191,13 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script>
-        $(function () {
-            $('.tm-product-name').on('click', function () {
-                window.location.href = "edit-product.html";
-            });
-        })
+        // $(function () {
+        //     $('.tm-product-name').on('click', function () {
+        //         window.location.href = "edit-product.html";
+        //     });
+        // })
 
-        $('table tr td a').on('click', function(e){
+        $('table tr td a.category').on('click', function(e){
             e.preventDefault()
             var  $this = $(this)
             var url = $this.attr("href")

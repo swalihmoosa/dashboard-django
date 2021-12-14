@@ -1,6 +1,6 @@
 import json
 from django.http.response import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from product.models import Category, ProductItem
 from product.forms import ProductForm
@@ -64,7 +64,6 @@ def add_product_form(request):
     form = ProductForm(request.POST)
 
     if form.is_valid():
-        print("#############################################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         form.save()
 
         response_data = {
@@ -82,3 +81,14 @@ def add_product_form(request):
 
     return HttpResponse(json.dumps(response_data),content_type="application/javascript")
 
+
+def edit_product(request, pk):  
+    product = ProductItem.objects.get(pk=pk)
+    form = ProductForm(instance = product)
+
+    context = {
+        "product" : product,
+        "form" : form
+    }
+
+    return render(request,'edit-product.html',context=context) 
