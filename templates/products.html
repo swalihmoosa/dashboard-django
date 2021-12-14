@@ -126,7 +126,11 @@
                                         <td class="text-center">{{product.units_sold}}</td>
                                         <td class="text-center">{{product.in_stock}}</td>
                                         <td>{{product.expire_date}}</td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                        <td>
+                                            <a href="{% url 'product:delete_product' pk=product.pk %}">
+                                                <i class="fas fa-trash-alt tm-trash-icon"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

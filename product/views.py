@@ -100,6 +100,14 @@ def update(request, pk):
 
     if form.is_valid():  
         form.save()  
-        return redirect("/product")  
+        return redirect("/product")
 
-    return render(request, 'edit-product.html', {'product':product})  
+    return render(request, 'edit-product.html', {'product':product})
+
+
+def delete_product(request, pk):
+    product = ProductItem.objects.filter(pk=pk)
+    product.delete()
+
+    return redirect("/product")
+
