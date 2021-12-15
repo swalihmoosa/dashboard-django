@@ -118,3 +118,7 @@ def delete_category(request, pk):
 
     return redirect("/product")
 
+
+def delete_multiple(request):
+    pass
+
