@@ -120,5 +120,6 @@ def delete_category(request, pk):
 
 
 def delete_multiple(request):
-    pass
+    product = request.POST.get('product')
 
+    return redirect("/product")
