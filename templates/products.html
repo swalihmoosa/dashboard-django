@@ -277,15 +277,16 @@
 
 
         $('form.delete').on('submit', function(e){
-            e.preventDefault();
+
+            e.preventDefault()
 
             var $this = $(this)
             var url = $this.attr("action")
             var method = $this.attr("method")
             
             $(':checkbox:checked').each(function(){
-                product = $(this).val()
-                console.log(product);
+                id = $(this).val()
+                console.log(id);
 
                 $.ajax({
                 headers: {
@@ -294,7 +295,9 @@
                 },
                 type : method,
                 url : url,
-                data : product,
+                data : {
+                    "id" : id
+                },
                 processData : false,
                 contentType : false,
                 cache : false,
@@ -307,7 +310,7 @@
                 },
             })
 
-            })
+        })
 
     })
     </script>

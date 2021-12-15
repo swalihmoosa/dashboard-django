@@ -120,6 +120,13 @@ def delete_category(request, pk):
 
 
 def delete_multiple(request):
-    product = request.POST.get('product')
+    if request.method == 'POST':
+        ids = request.POST.getlist('id[]')
+
+        print("#############################################################",ids)
+
+        for id in ids:
+            product = ProductItem.objects.filter(pk=id)
+            product.delete()
 
     return redirect("/product")
