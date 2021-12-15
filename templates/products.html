@@ -89,8 +89,9 @@
                 </div>
             </div>
             <!-- row -->
-            <form action="{% url 'product:delete_multiple' %}" class="delete" method="post">
-            {% csrf_token %}
+
+            <!-- <form action="{% url 'product:delete_multiple' %}" class="delete" method="post">
+            {% csrf_token %} -->
             <div class="row tm-content-row tm-mt-big">
                 <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     <div class="bg-white tm-block h-100">
@@ -142,8 +143,8 @@
 
                         <div class="tm-table-mt tm-table-actions-row">
                             <div class="tm-table-actions-col-left">
-                                <!-- <button type="submit" class="btn btn-danger delete_multiple">Delete Selected Items</button> -->
-                                <input type="submit" class="btn btn-danger delete_multiple" value="Delete Selected Items" />
+                                <button type="submit" class="btn btn-danger delete_multiple">Delete Selected Items</button>
+                                <!-- <input type="submit" class="btn btn-danger delete_multiple" value="Delete Selected Items" /> -->
                             </div>
                             <div class="tm-table-actions-col-right">
                                 <span class="tm-pagination-label">Page</span>
@@ -189,7 +190,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        <!-- </form> -->
             <footer class="row tm-mt-small">
                 <div class="col-12 font-weight-light">
                     <p class="d-inline-block tm-bg-black text-white py-2 px-4">
@@ -250,69 +251,71 @@
         })
 
 
-        // $('.delete_multiple').on('click', function(){
-        //     var csrf = $('input[name=csrfmiddlewaretoken]').val()
-        //     console.log(csrf);
-        //     $(':checkbox:checked').each(function(){
-        //         product = $(this).val()
-        //         console.log(product);
+        $('.delete_multiple').on('click', function(){
 
-        //         $.ajax({
-        //             url : "{% url 'product:delete_multiple' %}",
-        //             type : 'POST',
-        //             data : {
-        //                 product,
-        //                 csrfToken : csrf
-        //             },
-        //             success : function(){
-        //                 console.log("data sent");
-        //             },
-        //             failure : function(){
-        //                 console.log("Error");
-        //             }
-
-        //         })
-        //     })
-        // })
-
-
-        $('form.delete').on('submit', function(e){
-
-            e.preventDefault()
-
-            var $this = $(this)
-            var url = $this.attr("action")
-            var method = $this.attr("method")
-            
             $(':checkbox:checked').each(function(){
-                id = $(this).val()
-                console.log(id);
+                product = $(this).val()
+                console.log(product);
 
                 $.ajax({
-                headers: {
-                    'Content-Type': 'application/json',
-                    "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val()
-                },
-                type : method,
-                url : url,
-                data : {
-                    "id" : id
-                },
-                processData : false,
-                contentType : false,
-                cache : false,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val()
+                    },
+                    url : "{% url 'product:delete_multiple' %}",
+                    type : 'POST',
+                    data : {
+                        "product" : product
+                    },
+                    success : function(){
+                        console.log("data sent");
+                    },
+                    failure : function(){
+                        console.log("Error");
+                    }
 
-                success:function(data){
-                    console.log("success");
-                },
-                error: function(data){
-                    console.log("error");
-                },
+                })
             })
-
         })
 
-    })
+
+        // $('form.delete').on('submit', function(e){
+
+        //     e.preventDefault()
+
+        //     var $this = $(this)
+        //     var url = $this.attr("action")
+        //     var method = $this.attr("method")
+            
+        //     $(':checkbox:checked').each(function(){
+        //         id = $(':checkbox:checked').val()
+        //         console.log(id);
+
+        //         $.ajax({
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //                 "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val()
+        //             },
+        //             type : method,
+        //             url : url,
+        //             data : {
+        //                 "id" : id
+        //             },
+        //             processData : false,
+        //             contentType : false,
+        //             cache : false,
+
+        //             success:function(data){
+        //                 console.log("success");
+        //             },
+        //             error: function(data){
+        //                 console.log("error");
+        //             },
+        //         })
+
+        //     })
+
+        // })
     </script>
 </body>
 
