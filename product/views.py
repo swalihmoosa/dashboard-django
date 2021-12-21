@@ -1,6 +1,7 @@
 import json
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
+from django.views.generic import View
 
 from product.models import Category, ProductItem
 from product.forms import ProductForm
@@ -119,16 +120,18 @@ def delete_category(request, pk):
     return redirect("/product")
 
 
-def delete_multiple(request):
-    if request.method == 'POST':
-        body_unicode = request.body.decode('utf-8')
-        # received_json = json.loads(body_unicode)
+class Product_view(View):
+    def get(self,request):
+        products=ProductItem.objects.all()
+        context ={
+            "products":products,
+        }
+        return  render(request,"product.html", context=context)
 
-        # ids = request.POST['id']
-
-        print("#############################################################",body_unicode)
-        # print("#############################################################",ids)
-        # print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",received_json)
-        print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",list(request.POST.items()))
-
-    return redirect("/product")
+    def post(self, request, *args, **kwargs):
+        if request.method=="POST":
+            product_ids=request.POST.getlist('id[]')
+            for id in product_ids:
+                product = ProductItem.objects.get(pk=id)
+                product.delete()
+            return redirect("product:productitem")

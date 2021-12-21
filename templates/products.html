@@ -205,11 +205,6 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script>
-        // $(function () {
-        //     $('.tm-product-name').on('click', function () {
-        //         window.location.href = "edit-product.html";
-        //     });
-        // })
 
         $('table tr td a.category').on('click', function(e){
             e.preventDefault()
@@ -262,60 +257,60 @@
                         'Content-Type': 'application/json',
                         "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val()
                     },
+
                     url : "{% url 'product:delete_multiple' %}",
                     type : 'POST',
+                    contentType: "application/json; charset=utf-8",
                     data : {
-                        "product" : product
+                        product: JSON.stringify( product )
                     },
-                    success : function(){
-                        console.log("data sent");
+
+                    success : function(response){
+                        console.log("response");
                     },
+
                     failure : function(){
                         console.log("Error");
                     }
-
                 })
             })
         })
 
+        $(document).ready(function(){
+            let csrf= $('[name="csrfmiddlewaretoken"]').val()
+                    console.log(csrf);
+            $("div.tm-table-actions-row div.tm-table-actions-col-left button.btn").click(function(){
+                console.log("=======================done");
+                if(confirm("Are you sure you want to delete items"))
+                var id= [];
+                $(':checkbox:checked').each(function(i){
+                    id[i] =$(this).val()
+                    // var csrf=$('input[name=csrfmiddlewaretoken]').val()
+                    
+                });
+                if(id.length===0){
+                    alert("Please select Items to delete")
+                }else{
+                    console.log(id);
+                    $.ajax({
+                        url:"delete_multiple/",
+                        method:"POST",
+                        data:{
+                            id,
+                            csrfmiddlewaretoken:csrf,
+                        },
+                        success:function(response){
+                            for(i=0; i<id.length; i++){
+                                $('tr#'+id[i]+'').css('background-color', '#ccc')
+                                $('tr#'+id[i]+'').fadeOut('slow');
+                            }
+                        }
+                    })
+                }
+            })
+        })
 
-        // $('form.delete').on('submit', function(e){
 
-        //     e.preventDefault()
-
-        //     var $this = $(this)
-        //     var url = $this.attr("action")
-        //     var method = $this.attr("method")
-            
-        //     $(':checkbox:checked').each(function(){
-        //         id = $(':checkbox:checked').val()
-        //         console.log(id);
-
-        //         $.ajax({
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //                 "X-CSRFToken": $("[name=csrfmiddlewaretoken]").val()
-        //             },
-        //             type : method,
-        //             url : url,
-        //             data : {
-        //                 "id" : id
-        //             },
-        //             processData : false,
-        //             contentType : false,
-        //             cache : false,
-
-        //             success:function(data){
-        //                 console.log("success");
-        //             },
-        //             error: function(data){
-        //                 console.log("error");
-        //             },
-        //         })
-
-        //     })
-
-        // })
     </script>
 </body>
 
